@@ -1,3 +1,7 @@
+#disable various wrong error messages
+#pylint:disable=E1101
+#pylint:disable=E0602
+#pylint:disable=W0614
 import pygame, sys
 from pygame.locals import *
 
