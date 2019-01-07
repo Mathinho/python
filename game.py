@@ -9,31 +9,32 @@ pygame.init()
 FPS = 30 # frames per second setting
 fpsClock = pygame.time.Clock()
 
-DISPLAYSURF = pygame.display.set_mode((600, 400))
+DISPLAYSURF = pygame.display.set_mode((1000, 400))
+pygame.NOFRAME
 pygame.display.set_caption('Python Game')
 
 image = pygame.image.load('test.png')
-imageX = 10
-imageY = 10
+imageX = 1
+imageY = 1
 direction = 'right'
 
 while True:
     DISPLAYSURF.fill(GRAY)
 
     if direction == 'right':
-        imageX += 5
+        imageX += 2
     if imageX == 280:
         direction = 'down'
     elif direction == 'down':
-        imageY += 5
+        imageY += 2
     if imageY == 220:
         direction = 'left'
     elif direction == 'left':
-        imageX -= 5
+        imageX -= 2
     if imageX == 10:
         direction = 'up'
     elif direction == 'up':
-        imageY -= 5
+        imageY -= 2
     if imageY == 10:
         direction = 'right'
 
