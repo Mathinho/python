@@ -9,7 +9,7 @@ class Application(tk.Frame):
 
     def create_widgets(self):
         self.hi_there = tk.Button(self)
-        self.hi_there["text"] = "Hallo Welt!\n(einfach klicken)"
+        self.hi_there["text"] = "Hallo Welt\n(einfach klicken)"
         self.hi_there["command"] = self.say_hi
         self.hi_there.pack(side="top")
         self.hi_there.config(height = "2", width = "100")
@@ -23,6 +23,6 @@ class Application(tk.Frame):
 
 root = tk.Tk()
 app = Application(master=root)
-app.master.title("Hallo Welt")
+app.master.title("Hallo Welt...")
 app.master.geometry("640x480")
 app.mainloop()
