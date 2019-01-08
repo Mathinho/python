@@ -10,12 +10,12 @@ RED = (255, 0, 0)
 
 pygame.init()
 
-FPS = 30 # frames per second setting
+FPS = 60 # frames per second setting
 fpsClock = pygame.time.Clock()
 
-DISPLAYSURF = pygame.display.set_mode((1000, 400))
+DISPLAYSURF = pygame.display.set_mode((1200, 1000))
 pygame.NOFRAME
-pygame.display.set_caption('Python Game')
+pygame.display.set_caption('Martas Quest')
 
 image = pygame.image.load('test.png')
 imageX = 1
@@ -27,20 +27,20 @@ while True:
 
     if direction == 'right':
         imageX += 2
-    if imageX == 20:
-        direction = 'down'
+        if imageX == 201:
+            direction = 'down'
     elif direction == 'down':
         imageY += 2
-    if imageY == 20:
-        direction = 'left'
+        if imageY == 201:
+            direction = 'left'
     elif direction == 'left':
         imageX -= 2
-    if imageX == 10:
-        direction = 'up'
+        if imageX == 1:
+            direction = 'up'
     elif direction == 'up':
         imageY -= 2
-    if imageY == 10:
-        direction = 'right'
+        if imageY == 1:
+            direction = 'right'
 
     DISPLAYSURF.blit(image, (imageX, imageY))
 
