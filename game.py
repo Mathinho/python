@@ -27,11 +27,11 @@ while True:
 
     if direction == 'right':
         imageX += 2
-    if imageX == 280:
+    if imageX == 20:
         direction = 'down'
     elif direction == 'down':
         imageY += 2
-    if imageY == 220:
+    if imageY == 20:
         direction = 'left'
     elif direction == 'left':
         imageX -= 2
