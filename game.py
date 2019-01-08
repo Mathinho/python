@@ -18,6 +18,7 @@ pygame.NOFRAME
 pygame.display.set_caption('Martas Quest')
 
 image = pygame.image.load('test.png')
+image = pygame.transform.scale(image, (800, 200))
 imageX = 1
 imageY = 1
 direction = 'right'
@@ -27,11 +28,11 @@ while True:
 
     if direction == 'right':
         imageX += 2
-        if imageX == 201:
+        if imageX == 395:
             direction = 'down'
     elif direction == 'down':
         imageY += 2
-        if imageY == 201:
+        if imageY == 801:
             direction = 'left'
     elif direction == 'left':
         imageX -= 2
