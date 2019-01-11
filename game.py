@@ -6,7 +6,7 @@ import pygame, sys
 from pygame.locals import *
 
 GRAY = (200, 200, 200)
-RED = (255, 0, 0)
+RED = (200, 0, 0)
 
 pygame.init()
 
@@ -17,11 +17,15 @@ DISPLAYSURF = pygame.display.set_mode((1200, 1000))
 pygame.NOFRAME
 pygame.display.set_caption('Martas Quest')
 
-image = pygame.image.load('test.png')
-image = pygame.transform.scale(image, (800, 200))
+image = pygame.image.load('mario.png')
+image = pygame.transform.scale(image, (80, 94))
 imageX = 1
 imageY = 1
-direction = 'right'
+#direction = 'right'
+
+theme = pygame.mixer.music.load('SuperMarioBros.ogg')
+pygame.mixer.music.play()
+
 
 while True:
     DISPLAYSURF.fill(GRAY)
@@ -52,6 +56,9 @@ while True:
         imageY += 1
     elif key [pygame.K_UP]:
         imageY -= 1
+
+    if imageX >= imageY >= 100:
+        DISPLAYSURF.fill(RED)
 
     DISPLAYSURF.blit(image, (imageX, imageY))
 
