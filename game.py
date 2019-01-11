@@ -13,54 +13,52 @@ pygame.init()
 FPS = 60 # frames per second setting
 fpsClock = pygame.time.Clock()
 
+#define window size
 DISPLAYSURF = pygame.display.set_mode((1200, 1000))
 pygame.NOFRAME
 pygame.display.set_caption('Martas Quest')
 
-image = pygame.image.load('mario.png')
-image = pygame.transform.scale(image, (80, 94))
+#load various images
+imageLEFT = pygame.image.load('marioLEFT.png')
+imageLEFT = pygame.transform.scale(imageLEFT, (80, 94))
+imageRIGHT = pygame.image.load('marioRIGHT.png')
+imageRIGHT = pygame.transform.scale(imageRIGHT, (80, 94))
+imageLAST = pygame.image.load('marioRIGHT.png')
+imageLAST = pygame.transform.scale(imageRIGHT, (80, 94))
 imageX = 1
 imageY = 1
-#direction = 'right'
 
+#load background music
 theme = pygame.mixer.music.load('SuperMarioBros.ogg')
 pygame.mixer.music.play()
-
 
 while True:
     DISPLAYSURF.fill(GRAY)
 
-    #if direction == 'right':
-    #    imageX += 2
-    #    if imageX == 395:
-    #        direction = 'down'
-    #elif direction == 'down':
-    #    imageY += 2
-    #    if imageY == 801:
-    #        direction = 'left'
-    #elif direction == 'left':
-    #    imageX -= 2
-    #    if imageX == 1:
-    #        direction = 'up'
-    #elif direction == 'up':
-    #    imageY -= 2
-    #    if imageY == 1:
-    #        direction = 'right'
+    #get keyboard to move character
     key = pygame.key.get_pressed()
-
     if key [pygame.K_LEFT]:
+        DISPLAYSURF.blit(imageLEFT, (imageX, imageY))
         imageX -= 1
+        imageLAST = imageLEFT
     elif key [pygame.K_RIGHT]:
+        DISPLAYSURF.blit(imageRIGHT, (imageX, imageY))
         imageX += 1
+        imageLAST = imageRIGHT
     elif key [pygame.K_DOWN]:
+        DISPLAYSURF.blit(imageRIGHT, (imageX, imageY))
         imageY += 1
+        imageLAST = imageRIGHT
     elif key [pygame.K_UP]:
+        DISPLAYSURF.blit(imageRIGHT, (imageX, imageY))
         imageY -= 1
+        imageLAST = imageRIGHT
 
     if imageX >= imageY >= 100:
         DISPLAYSURF.fill(RED)
 
-    DISPLAYSURF.blit(image, (imageX, imageY))
+    #show character
+    DISPLAYSURF.blit(imageLAST, (imageX, imageY))
 
     for event in pygame.event.get():
         if event.type == QUIT:
