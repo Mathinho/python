@@ -26,22 +26,32 @@ direction = 'right'
 while True:
     DISPLAYSURF.fill(GRAY)
 
-    if direction == 'right':
-        imageX += 2
-        if imageX == 395:
-            direction = 'down'
-    elif direction == 'down':
-        imageY += 2
-        if imageY == 801:
-            direction = 'left'
-    elif direction == 'left':
-        imageX -= 2
-        if imageX == 1:
-            direction = 'up'
-    elif direction == 'up':
-        imageY -= 2
-        if imageY == 1:
-            direction = 'right'
+    #if direction == 'right':
+    #    imageX += 2
+    #    if imageX == 395:
+    #        direction = 'down'
+    #elif direction == 'down':
+    #    imageY += 2
+    #    if imageY == 801:
+    #        direction = 'left'
+    #elif direction == 'left':
+    #    imageX -= 2
+    #    if imageX == 1:
+    #        direction = 'up'
+    #elif direction == 'up':
+    #    imageY -= 2
+    #    if imageY == 1:
+    #        direction = 'right'
+    key = pygame.key.get_pressed()
+
+    if key [pygame.K_LEFT]:
+        imageX -= 1
+    elif key [pygame.K_RIGHT]:
+        imageX += 1
+    elif key [pygame.K_DOWN]:
+        imageY += 1
+    elif key [pygame.K_UP]:
+        imageY -= 1
 
     DISPLAYSURF.blit(image, (imageX, imageY))
 
