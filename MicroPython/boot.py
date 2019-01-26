@@ -14,8 +14,8 @@ esp.osdebug(None)
 import gc
 gc.collect()
 
-ssid = 'albg_wlan'
-password = 'boardalpha@0.9.168.192#14albg'
+ssid = 'WLAN-NJ7XPS'
+password = '3928154662345212'
 
 station = network.WLAN(network.STA_IF)
 
