@@ -6,9 +6,8 @@ except:
   import socket
 
 from machine import Pin
-import network
+import machine, network, dht, esp
 
-import esp
 esp.osdebug(None)
 
 import gc
@@ -29,3 +28,4 @@ print('Connection successful')
 print(station.ifconfig())
 
 led = Pin(0, Pin.OUT)
+d = dht.DHT11(machine.Pin(2))
