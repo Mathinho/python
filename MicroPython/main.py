@@ -22,5 +22,4 @@ while True:
         oled.fill(0)
         oled.text("Servo: " + str(i) + " Grad", 0, 0)
         oled.show()
-        #time.sleep(1)
         pulse(led, 60)
