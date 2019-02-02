@@ -15,10 +15,10 @@ host = "pool.ntp.org"
 def time():
     NTP_QUERY = bytearray(48)
     NTP_QUERY[0] = 0x1b
-    addr = socket.getaddrinfo(host, 123)[0][-1]
+    #addr = socket.getaddrinfo(host, 123)[0][-1]
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     s.settimeout(1)
-    res = s.sendto(NTP_QUERY, addr)
+    #res = s.sendto(NTP_QUERY, addr)
     msg = s.recv(48)
     s.close()
     val = struct.unpack("!I", msg[40:44])[0]
