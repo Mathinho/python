@@ -1,5 +1,4 @@
-import ili9341
-import time
+import ili9341, time, bitmapfont, math
 from machine import Pin, SPI
 from rgb import color565
 #spi = SPI(mosi=Pin(13), sck=Pin(14), miso=Pin(12))
@@ -19,3 +18,8 @@ display.fill_rectangle(0, 0, 120, 170, color565(0, 0, 255))
 #text(display, "test", 100, 100)
 display.hline(100, 20, 100, color565(0, 255, 0))
 display.vline(100, 20, 100, color565(0, 255, 0))
+
+bf = bitmapfont.BitmapFont(320, 240, display.pixel)
+bf.init()
+bf.text('test', 0, 0, 2)
+bf.text('hallo Marta', 100, 200, 500)
