@@ -1,25 +1,21 @@
-#pylint:disable=E0401
-#pylint:disable=E1101
-
-import machine, time, ssd1306, math
-
-servo = machine.PWM(machine.Pin(13), freq=50)
-
-i2c = machine.I2C(-1, machine.Pin(14), machine.Pin(12))
-oled = ssd1306.SSD1306_I2C(128, 64, i2c, 0x3d)
-
-led = machine.PWM(machine.Pin(0), freq=50)
-
-def pulse(l, t):
-    for i in range(20):
-        l.duty(int(math.sin(i / 10 * math.pi) * 500 + 500))
-        time.sleep_ms(t)
-
-while True:
-    for i in range(39, 116, 5):
-        servo.duty(i)
-        i = i + 1
-        oled.fill(0)
-        oled.text("Servo: " + str(i) + " Grad", 0, 0)
-        oled.show()
-        pulse(led, 60)
+import ili9341
+import time
+from machine import Pin, SPI
+from rgb import color565
+#spi = SPI(mosi=Pin(13), sck=Pin(14), miso=Pin(12))
+#hspi = SPI(1, 80000000, sck=Pin(14), mosi=Pin(13), miso=Pin(12))
+vspi = SPI(2, baudrate=80000000, polarity=0, phase=0, bits=8, firstbit=0, sck=Pin(18), mosi=Pin(23), miso=Pin(19))
+display = ili9341.ILI9341(vspi, cs=Pin(15), dc=Pin(4), rst=Pin(16))
+display.fill(color565(255, 0, 0))
+#display.fill(ili9341.color565(0xff, 0x11, 0x22))
+#display.pixel(120, 160, 0)
+time.sleep(1)
+display.fill(0)
+time.sleep(1)
+display.pixel(200, 200, color565(255, 255, 255))
+time.sleep(1)
+display.fill_rectangle(0, 0, 120, 170, color565(0, 0, 255))
+#display.text('test', 100, 100, 100)
+#text(display, "test", 100, 100)
+display.hline(100, 20, 100, color565(0, 255, 0))
+display.vline(100, 20, 100, color565(0, 255, 0))
