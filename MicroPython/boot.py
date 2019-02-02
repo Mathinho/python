@@ -27,5 +27,5 @@ while station.isconnected() == False:
 print('Connection successful')
 print(station.ifconfig())
 
-led = Pin(0, Pin.OUT)
-d = dht.DHT11(machine.Pin(2))
+#led = Pin(0, Pin.OUT)
+d = dht.DHT11(machine.Pin(2, Pin.IN, Pin.PULL_UP))
