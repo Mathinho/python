@@ -1,0 +1,41 @@
+import ili9341, time, bitmapfont, utime
+from ntptime import settime
+from machine import SPI
+from rgb import color565
+hspi = SPI(1, 80000000, sck=Pin(14), mosi=Pin(13), miso=Pin(12))
+display = ili9341.ILI9341(hspi, cs=Pin(15), dc=Pin(4), rst=Pin(16))
+#display.fill(color565(255, 0, 0))
+#time.sleep(0.1)
+display.fill(0)
+#time.sleep(0.1)
+#display.pixel(200, 200, color565(255, 255, 255))
+#time.sleep(0.1)
+display.fill_rectangle(0, 0, 240, 10, color565(0, 0, 255))
+#display.hline(100, 20, 100, color565(0, 255, 0))
+#display.vline(100, 20, 100, color565(0, 255, 0))
+
+bf = bitmapfont.BitmapFont(320, 240, display.pixel)
+bf.init()
+bf.text(ssid, 2, 1, color565(255, 255, 255))
+bf.text("Raumtemperatur:", 10, 15, color565(255, 255, 255))
+bf.text("Grad", 140, 15, color565(255, 255, 255))
+bf.text("Luftfeuchtigkeit:", 10, 25, color565(255, 255, 255))
+bf.text("%", 140, 25, color565(255, 255, 255))
+bf.text(":", 223, 1, color565(255, 255, 255))
+settime()
+
+while True:
+    d.measure()
+    bf.text(str(d.temperature()), 120, 15, color565(255, 255, 255))
+    bf.text(str(d.humidity()), 120, 25, color565(255, 255, 255))
+    #bf.text("Luftfeuchtigkeit: " + str(d.humidity()) + " %", 10, 25, color565(255, 255, 255))
+    #bf.text(str(d.temperature()), 120, 15, color565(0, 0, 0))
+    #bf.text(str(d.humidity()), 120, 25, color565(0, 0, 0))
+    #bf.text("Luftfeuchtigkeit: " + str(d.humidity()) + " %", 10, 25, color565(0, 0, 0))
+    year, month, day, hour, minute, second, ms, dayinyear = utime.localtime()
+    bf.text(str('{:02d}'.format(hour + 1)), 213, 1, color565(255, 255, 255))
+    bf.text(str('{:02d}'.format(minute)), 227, 1, color565(255, 255, 255))
+    time.sleep(30)
+    bf.text(str('{:02d}'.format(hour + 1)), 213, 1, color565(0, 0, 255))
+    bf.text(str('{:02d}'.format(minute)), 227, 1, color565(0, 0, 255))
+    display.fill_rectangle(120, 15, 19, 20, color565(0, 0, 0))
